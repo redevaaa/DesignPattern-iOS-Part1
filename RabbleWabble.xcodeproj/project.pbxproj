@@ -12,9 +12,13 @@
 		84C309882685893F00F547B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C309872685893F00F547B6 /* ViewController.swift */; };
 		84C3098D2685894200F547B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C3098C2685894200F547B6 /* Assets.xcassets */; };
 		84C309902685894200F547B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C3098E2685894200F547B6 /* LaunchScreen.storyboard */; };
+		DC7CB758852282A3E7F50B50 /* libPods-RabbleWabble.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A261B56C6676342C239868A /* libPods-RabbleWabble.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15D908C781D0D089DA27F4C8 /* Pods-RabbleWabble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbleWabble.release.xcconfig"; path = "Target Support Files/Pods-RabbleWabble/Pods-RabbleWabble.release.xcconfig"; sourceTree = "<group>"; };
+		5EA4EF00957DADDA1A4790C9 /* Pods-RabbleWabble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbleWabble.debug.xcconfig"; path = "Target Support Files/Pods-RabbleWabble/Pods-RabbleWabble.debug.xcconfig"; sourceTree = "<group>"; };
+		7A261B56C6676342C239868A /* libPods-RabbleWabble.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RabbleWabble.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C309802685893F00F547B6 /* RabbleWabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RabbleWabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C309832685893F00F547B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C309852685893F00F547B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,17 +33,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC7CB758852282A3E7F50B50 /* libPods-RabbleWabble.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D4E7720FC060D55C2380F93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EA4EF00957DADDA1A4790C9 /* Pods-RabbleWabble.debug.xcconfig */,
+				15D908C781D0D089DA27F4C8 /* Pods-RabbleWabble.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		84C309772685893F00F547B6 = {
 			isa = PBXGroup;
 			children = (
 				84C309822685893F00F547B6 /* RabbleWabble */,
 				84C309812685893F00F547B6 /* Products */,
+				0D4E7720FC060D55C2380F93 /* Pods */,
+				9FFAB92390A058C91D8BDF77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +81,14 @@
 			path = RabbleWabble;
 			sourceTree = "<group>";
 		};
+		9FFAB92390A058C91D8BDF77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A261B56C6676342C239868A /* libPods-RabbleWabble.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +96,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C309942685894200F547B6 /* Build configuration list for PBXNativeTarget "RabbleWabble" */;
 			buildPhases = (
+				5335263D5BECF9F40CA54A14 /* [CP] Check Pods Manifest.lock */,
 				84C3097C2685893F00F547B6 /* Sources */,
 				84C3097D2685893F00F547B6 /* Frameworks */,
 				84C3097E2685893F00F547B6 /* Resources */,
@@ -127,6 +153,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5335263D5BECF9F40CA54A14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RabbleWabble-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84C3097C2685893F00F547B6 /* Sources */ = {
@@ -271,6 +322,7 @@
 		};
 		84C309952685894200F547B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EA4EF00957DADDA1A4790C9 /* Pods-RabbleWabble.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,6 +342,7 @@
 		};
 		84C309962685894200F547B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15D908C781D0D089DA27F4C8 /* Pods-RabbleWabble.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
