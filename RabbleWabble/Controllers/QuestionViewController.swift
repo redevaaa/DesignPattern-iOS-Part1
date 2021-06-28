@@ -8,10 +8,38 @@
 import UIKit
 import SnapKit
 
+public protocol QuestionViewControllerDelegate: class {
+
+    func questionViewController(
+        _ viewController: QuestionViewController,
+        didCancel questionGroup: QuestionGroup,
+        at questionIndex: Int)
+
+    func questionViewController(
+        _ viewController: QuestionViewController,
+        didComplete questionGroup: QuestionGroup)
+}
+
 public class QuestionViewController: UIViewController {
 
     // MARK: - Instance Properties
-    public var questionGroup = QuestionGroup.basicPhrases()
+    public weak var delegate: QuestionViewControllerDelegate?
+    public var questionGroup: QuestionGroup! {
+      didSet {
+        navigationItem.title = questionGroup.title
+      }
+    }
+
+    private lazy var questionIndexItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "",
+                                   style: .plain,
+                                   target: nil,
+                                   action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        return item
+    }()
+
     public var questionIndex = 0
 
     public var correctCount = 0
@@ -24,20 +52,37 @@ public class QuestionViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
 
+        setupView()
+        setupCancelButton()
+        showQuestion()
+    }
+
+    private func setupView() {
         self.view.addSubview(questionView)
         questionView.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
 
-        setupGesture()
-        showQuestion()
-    }
-
-    private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleAnswerLabels(_:)))
         questionView.addGestureRecognizer(tapGesture)
         questionView.correctButton.addTarget(self, action: #selector(handleCorrect(_:)), for: .touchUpInside)
         questionView.incorrectButton.addTarget(self, action: #selector(handleIncorrect(_:)), for: .touchUpInside)
+    }
+
+    private func setupCancelButton() {
+        let action = #selector(handleCancelPressed(sender:))
+        let image = UIImage(named: "ic_menu")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image,
+                                                           landscapeImagePhone: nil,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: action)
+    }
+
+    @objc private func handleCancelPressed(sender: UIBarButtonItem) {
+        delegate?.questionViewController(self,
+                                         didCancel: questionGroup,
+                                         at: questionIndex)
     }
 
     private func showQuestion() {
@@ -49,6 +94,8 @@ public class QuestionViewController: UIViewController {
 
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
+
+        questionIndexItem.title = "\(questionIndex + 1)/" + "\(questionGroup.questions.count)"
     }
 
     // MARK: - Actions
@@ -75,7 +122,8 @@ public class QuestionViewController: UIViewController {
     private func showNextQuestion() {
         questionIndex += 1
         guard questionIndex < questionGroup.questions.count else {
-            // TODO: - Handle this...!
+            delegate?.questionViewController(self,
+                                             didComplete: questionGroup)
             return
         }
         showQuestion()
