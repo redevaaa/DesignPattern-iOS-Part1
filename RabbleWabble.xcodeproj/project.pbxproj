@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848C648B268B2041000E6255 /* QuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C648A268B2041000E6255 /* QuestionStrategy.swift */; };
+		848C648F268B21C9000E6255 /* SequentialQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C648E268B21C9000E6255 /* SequentialQuestionStrategy.swift */; };
+		848C6492268B2250000E6255 /* RandomQuestionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848C6491268B2250000E6255 /* RandomQuestionStrategy.swift */; };
 		84C309842685893F00F547B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C309832685893F00F547B6 /* AppDelegate.swift */; };
 		84C309862685893F00F547B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C309852685893F00F547B6 /* SceneDelegate.swift */; };
 		84C309882685893F00F547B6 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C309872685893F00F547B6 /* QuestionViewController.swift */; };
@@ -25,6 +28,9 @@
 		15D908C781D0D089DA27F4C8 /* Pods-RabbleWabble.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbleWabble.release.xcconfig"; path = "Target Support Files/Pods-RabbleWabble/Pods-RabbleWabble.release.xcconfig"; sourceTree = "<group>"; };
 		5EA4EF00957DADDA1A4790C9 /* Pods-RabbleWabble.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RabbleWabble.debug.xcconfig"; path = "Target Support Files/Pods-RabbleWabble/Pods-RabbleWabble.debug.xcconfig"; sourceTree = "<group>"; };
 		7A261B56C6676342C239868A /* libPods-RabbleWabble.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RabbleWabble.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		848C648A268B2041000E6255 /* QuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategy.swift; sourceTree = "<group>"; };
+		848C648E268B21C9000E6255 /* SequentialQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequentialQuestionStrategy.swift; sourceTree = "<group>"; };
+		848C6491268B2250000E6255 /* RandomQuestionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuestionStrategy.swift; sourceTree = "<group>"; };
 		84C309802685893F00F547B6 /* RabbleWabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RabbleWabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C309832685893F00F547B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C309852685893F00F547B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		848C6489268B2021000E6255 /* Strategies */ = {
+			isa = PBXGroup;
+			children = (
+				848C648A268B2041000E6255 /* QuestionStrategy.swift */,
+				848C648E268B21C9000E6255 /* SequentialQuestionStrategy.swift */,
+				848C6491268B2250000E6255 /* RandomQuestionStrategy.swift */,
+			);
+			path = Strategies;
+			sourceTree = "<group>";
+		};
 		84C309772685893F00F547B6 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +102,7 @@
 				84C309A12685B85600F547B6 /* Controllers */,
 				84C309A22685B89700F547B6 /* Models */,
 				84C309A32685B8A300F547B6 /* Resources */,
+				848C6489268B2021000E6255 /* Strategies */,
 				84C309A42685B8B200F547B6 /* Views */,
 			);
 			path = RabbleWabble;
@@ -247,6 +264,9 @@
 				84C309BA2685BCEE00F547B6 /* QuestionView.swift in Sources */,
 				84C309AF2685BA4100F547B6 /* QuestionGroupData.swift in Sources */,
 				84C309C02685E7CD00F547B6 /* QuestionGroupCell.swift in Sources */,
+				848C648F268B21C9000E6255 /* SequentialQuestionStrategy.swift in Sources */,
+				848C6492268B2250000E6255 /* RandomQuestionStrategy.swift in Sources */,
+				848C648B268B2041000E6255 /* QuestionStrategy.swift in Sources */,
 				84C309AC2685B9B600F547B6 /* QuestionGroup.swift in Sources */,
 				84C309BD2685E58A00F547B6 /* SelectQuestionGroupViewController.swift in Sources */,
 				84C309862685893F00F547B6 /* SceneDelegate.swift in Sources */,

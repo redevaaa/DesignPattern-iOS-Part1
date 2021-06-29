@@ -64,7 +64,7 @@ extension SelectQuestionGroupViewController: UITableViewDelegate{
     public func tableView(_ tableView: UITableView,
                           didSelectRowAt indexPath: IndexPath) {
         let viewController = QuestionViewController()
-        viewController.questionGroup = selectedQuestionGroup
+        viewController.questionStrategy = RandomQuestionStrategy(questionGroup: selectedQuestionGroup) // could switch to SequentialQuestionStrategy
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
 
@@ -76,14 +76,13 @@ extension SelectQuestionGroupViewController: UITableViewDelegate{
 extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
 
     public func questionViewController(_ viewController: QuestionViewController,
-                                       didCancel questionGroup: QuestionGroup,
-                                       at questionIndex: Int) {
+                                       didCancel questionStrategy: QuestionStrategy) {
         navigationController?.popToViewController(self,
                                                   animated: true)
     }
 
     public func questionViewController(_ viewController: QuestionViewController,
-                                       didComplete questionGroup: QuestionGroup) {
+                                       didComplete questionStrategy: QuestionStrategy) {
         navigationController?.popToViewController(self,
                                                   animated: true)
     }
