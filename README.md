@@ -31,7 +31,7 @@
 
 
 
-##Behavioral Design Pattern
+## Behavioral Design Pattern
 
 - **Delegation Pattern** - enables an object to use another “helper” object to provide data or perform a task rather than do the task itself.
 
